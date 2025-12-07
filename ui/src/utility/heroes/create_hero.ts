@@ -4,11 +4,19 @@ export const createHero = (
   packageId: string,
   name: string,
   imageUrl: string,
-  power: string,
+  power: string,// string ??
 ) => {
   const tx = new Transaction();
 
   // TODO: Add moveCall to create a hero
+  tx.moveCall({
+    target: `${packageId}::hero::create;hero`,
+    arguments: [
+      tx.pure.string(name),
+      tx.pure.string(imageUrl),
+      tx.pure.u64(power),
+    ],
+  });
   // Function: `${packageId}::hero::create_hero`
   // Arguments: name (string), imageUrl (string), power (u64)
     // Hints:
