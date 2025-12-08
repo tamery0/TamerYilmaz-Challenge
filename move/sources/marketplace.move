@@ -51,7 +51,7 @@ fun init(ctx: &mut TxContext) {
         // Create AdminCap id with object::new(ctx)
     let admin_cap = AdminCap{
         id: object::new(ctx),
-    }
+    };
     // TODO: Transfer it to the module publisher (ctx.sender()) using transfer::public_transfer() function
     transfer::public_transfer(admin_cap,ctx.sender());
 }
@@ -67,7 +67,7 @@ public fun list_hero(nft: Hero, price: u64, ctx: &mut TxContext) {
         nft,
         price,
         seller: ctx.sender(),
-    }
+    };
     // TODO: Emit HeroListed event with listing details (Don't forget to use object::id(&list_hero) )
     event::emit(HeroListed{
         list_hero_id: object::id(&list_hero),

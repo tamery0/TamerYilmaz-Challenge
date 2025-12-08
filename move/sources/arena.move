@@ -86,7 +86,7 @@ public fun battle(hero: Hero, arena: Arena, ctx: &mut TxContext) {
             loser_hero_id: hero_id,
             timestamp: ctx.epoch_timestamp_ms(),
         });
-    }
+    };
     // TODO: Delete the battle place ID
     object::delete(id);
 }
