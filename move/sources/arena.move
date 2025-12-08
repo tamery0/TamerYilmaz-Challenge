@@ -39,8 +39,8 @@ public fun create_arena(hero: Hero, ctx: &mut TxContext) {
         owner: ctx.sender(),
     };
     // TODO: Emit ArenaCreated event with arena ID and timestamp (Don't forget to use ctx.epoch_timestamp_ms(), object::id(&arena))
-    sui::event::emit(ArenaCreated{
-        arena_id: sui::object::new(ctx),
+    event::emit(ArenaCreated{
+        arena_id: object::id(&arena),
         timestamp: ctx.epoch_timestamp_ms(),
     });
     // TODO: Use transfer::share_object() to make it publicly tradeable
@@ -88,6 +88,6 @@ public fun battle(hero: Hero, arena: Arena, ctx: &mut TxContext) {
         });
     }
     // TODO: Delete the battle place ID
-    sui::object::delete(id);
+    object::delete(id);
 }
 
